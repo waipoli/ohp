@@ -1,4 +1,5 @@
 use std::fs;
+use colored::Colorize;
 use crate::utils;
 
 use crate::names::*;
@@ -9,10 +10,10 @@ fn gen_checker_utils() -> String {
     return CHECKER_UTILS_SOURCE.replace("{INPUT_FILE}",INPUT_FULL).replace("{OUTPUT_CORRECT_FILE}",OUTPUT_CORRECT_FULL).replace("{OUTPUT_SOL_FILE}",OUTPUT_SOL_FULL);
 }
 
-pub(crate) fn init(force: bool) {
+pub fn init(force: bool) {
     if utils::exist_dir(DIR_NAME_FULL) {
         if !force {
-            println!("Directory is not empty. Use --force to overwrite");
+            println!("{}", "Directory is not empty. Use --force to overwrite".red());
             return;
         } else {
             fs::remove_dir_all(DIR_NAME_FULL).unwrap();

@@ -3,11 +3,12 @@ mod commands;
 mod utils;
 mod names;
 mod recourses;
+mod env;
 
 #[derive(Parser)]
 #[command(
     name = "OHP",
-    version = "0.1.0",
+    version = "0.1.1",
     author = "Maksym Shvedchenko <maximschved8@gmail.com>",
     about = "Does awesome things"
 )]

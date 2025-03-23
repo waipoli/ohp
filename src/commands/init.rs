@@ -1,16 +1,16 @@
 use crate::env::Env;
 use crate::names::*;
-use crate::recourses::{CHECKER_UTILS_SOURCE, TESTLIB_SOURCE};
+use crate::recourses::{CHECKER_SOURCE, CHECKER_UTILS_SOURCE, GEN_SOURCE, TESTLIB_SOURCE};
 use crate::utils;
 use colored::Colorize;
 use std::collections::HashMap;
 use std::fs;
 
 fn gen_checker_utils() -> String {
-    return CHECKER_UTILS_SOURCE
+    CHECKER_UTILS_SOURCE
         .replace("{INPUT_FILE}", INPUT_FULL)
         .replace("{OUTPUT_CORRECT_FILE}", OUTPUT_CORRECT_FULL)
-        .replace("{OUTPUT_SOL_FILE}", OUTPUT_SOL_FULL);
+        .replace("{OUTPUT_SOL_FILE}", OUTPUT_SOL_FULL)
 }
 
 pub fn init(force: bool) {
@@ -33,8 +33,8 @@ pub fn init(force: bool) {
     fs::write(CHECKER_UTILS_FULL, gen_checker_utils()).unwrap();
     fs::write(SOL_FULL, "").unwrap();
     fs::write(CORRECT_FULL, "").unwrap();
-    fs::write(GEN_FULL, "").unwrap();
-    fs::write(CHECKER_FULL, "").unwrap();
+    fs::write(GEN_FULL, GEN_SOURCE).unwrap();
+    fs::write(CHECKER_FULL, CHECKER_SOURCE).unwrap();
     fs::write(INPUT_FULL, "").unwrap();
     fs::write(OUTPUT_CORRECT_FULL, "").unwrap();
     fs::write(OUTPUT_SOL_FULL, "").unwrap();
